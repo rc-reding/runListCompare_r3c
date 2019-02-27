@@ -1,4 +1,4 @@
-# runListCompare: maximum likelihood sequence comparison, corrected for recombination
+# Maximum likelihood sequence comparison, corrected for recombination
 
 The `runListCompare.py` and associated scripts provide a python based wrapper for generating maximum likelihood phylogenies from a list of fasta consensus sequence files obtained from mapping to the same reference. The script enables large numbers of samples to be initially handled in parallel and clustered with similar sequences based on a SNP threshold before calculating maximum likelihood trees for each cluster using either PhyML or iqTree. Correction for recombination is done with ClonalFrameML.
 
