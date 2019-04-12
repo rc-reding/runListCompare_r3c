@@ -1,0 +1,8 @@
+33e6dcec	test/33e6dcec-99a9-4dcb-b502-3f40497ede03_v3.fasta.gz
+44b8bbc2	test/44b8bbc2-7c98-40d4-a1dc-b2d649c6a82d_v3.fasta.gz
+5b6f3b49	test/5b6f3b49-81d1-4bda-93e8-b8639d15e332_v3.fasta.gz
+7e7500f3	test/7e7500f3-f89c-4769-9054-00c705cf3168_v3.fasta.gz
+e5e9e3a4	test/e5e9e3a4-4884-4dbf-82cf-8adbdf20f7d7_v3.fasta.gz
+e69dd351	test/e69dd351-d716-41b2-bf6b-78e22b1cb461_v3.fasta.gz
+ecb5f5c6	test/ecb5f5c6-eba4-45d8-b32b-9a03a88cec1c_v3.fasta.gz
+fec51366	test/fec51366-f5a9-4ad4-882d-1a16b711f460_v3.fasta.gz
