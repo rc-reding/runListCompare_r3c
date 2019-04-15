@@ -10,7 +10,7 @@ from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.Alphabet import generic_dna
 from Bio.SeqRecord import SeqRecord
-from itertools import izip
+
 from optparse import OptionParser
 
 usage = '''
@@ -65,7 +65,7 @@ if __name__=='__main__':
 		r.close()
 	
 		for m in mask:
-			for i in xrange(m[0], m[1]+1):
+			for i in range(m[0], m[1]+1):
 				masksites[i]=0
 	
 		sys.stderr.write('Successfully read in mobile elements mask.\n') 
@@ -95,7 +95,7 @@ if __name__=='__main__':
 	start = time.clock()
 	
 	## find nonshared positions after masking
-	seq_generator = izip( masksites, *seqlist  )
+	seq_generator = zip( masksites, *seqlist  )
 	nonshared_pos =[ i for ( i, a ) in enumerate( seq_generator ) 
 				   if a[0]==1 and len( set( [ ai for ai in a[1:] if ai in 'ACGT' ] ) ) >  1 ]
 	sys.stdout.write('Successfully obtained masked nonshared_diffs; there are %s of them.\n'%len( nonshared_pos ) )

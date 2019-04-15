@@ -7,7 +7,7 @@
 
 
 from optparse import OptionParser
-import os, sys, commands
+import os, sys, subprocess
 import networkx as nx
 
 usage = '''

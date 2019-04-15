@@ -3,7 +3,7 @@
 
 import sys, re, os, gzip, time, multiprocessing, math, random
 from Bio import SeqIO
-from itertools import izip
+
 from optparse import OptionParser
 
 usage = '''
@@ -28,7 +28,7 @@ bases = "ACGT"
 
 def get_distance( seq1, seq2 ):
 	'''Function to calculate the [Hamming] distance between two sequences'''
-	return sum(c1!=c2 for c1, c2 in izip( seq1, seq2 ) if c1 in bases and c2 in bases)
+	return sum(c1!=c2 for c1, c2 in zip( seq1, seq2 ) if c1 in bases and c2 in bases)
 
 if __name__=="__main__":
 	

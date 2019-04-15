@@ -58,12 +58,12 @@ if __name__=='__main__':
 	
 	#get list of clusters, comids
 	f = open(clusterfile, 'r')
-	bin = f.next()
+	bin = next(f)
 	clusterDict = dict()
 
 	for l in f:
 		l = l.strip().split()
-		if l[0] in clusterDict.keys():
+		if l[0] in list(clusterDict.keys()):
 			clusterDict[l[0]].append(l[1])
 		else:
 			clusterDict[l[0]] = [l[1]]
@@ -86,7 +86,7 @@ if __name__=='__main__':
 	if not os.path.isdir('%s/cluster'%output_stem):
 		os.mkdir('%s/cluster'%output_stem)
 	
-	for c in clusterDict.keys():
+	for c in list(clusterDict.keys()):
 		clusterListOut = '%s/cluster/cluster_%s.txt'%(output_stem, c)
 		if len(clusterDict[c])>2:
 			f = open(clusterListOut, 'w')
@@ -120,7 +120,7 @@ if __name__=='__main__':
 			getAC(c, output_stem, maskfile, varsite_keep, seq_keep, align_n)
 
 	# get list of clusters
-	cd = [int(c) for c in clusterDict.keys() if len(clusterDict[c])>2]
+	cd = [int(c) for c in list(clusterDict.keys()) if len(clusterDict[c])>2]
 	cd.sort(reverse=True)
 
 	procs = []

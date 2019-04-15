@@ -10,7 +10,7 @@ from Bio import SeqIO
 from Bio.Seq import Seq
 from Bio.Alphabet import generic_dna
 from Bio.SeqRecord import SeqRecord
-from itertools import izip
+
 from optparse import OptionParser
 from subprocess import call
 
@@ -70,7 +70,7 @@ if __name__=='__main__':
 		r.close()
 	
 		for m in mask:
-			for i in xrange(m[0], m[1]+1):
+			for i in range(m[0], m[1]+1):
 				masksites[i]=0
 	
 		sys.stderr.write('Successfully read in mobile elements mask.\n') 
@@ -109,7 +109,7 @@ if __name__=='__main__':
 		sys.stdout.flush()
 		masksites_j = masksites_j[start_i: end_i]
 		seqlist_j = [s[start_i: end_i] for s in seqlist_j]
-		seq_generator = izip( masksites_j, *seqlist_j  )
+		seq_generator = zip( masksites_j, *seqlist_j  )
 		nonshared_pos =[ i+start_i for ( i, a ) in enumerate( seq_generator ) 
 				   if a[0]==1 and len( set( [ ai for ai in a[1:] if ai in 'ACGT' ] ) ) >  1 ]
 		with open('%s_positions_%s'%(outname_prefix, j), 'w' ) as out:

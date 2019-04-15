@@ -55,12 +55,12 @@ if __name__=='__main__':
 	clusterfile = '%s/clusters.txt'%input_stem
 	sys.stdout.write('Opening cluster file: %s\n'%clusterfile)
 	f = open(clusterfile, 'r')
-	bin = f.next()
+	bin = next(f)
 	clusterDict = dict()
 	
 	for l in f:
 		l = l.strip().split()
-		if l[0] in clusterDict.keys():
+		if l[0] in list(clusterDict.keys()):
 			clusterDict[l[0]].append(l[1])
 		else:
 			clusterDict[l[0]] = [l[1]]
@@ -97,7 +97,7 @@ if __name__=='__main__':
 			getML(c)
 	
 	# get list of clusters
-	cd = [int(c) for c in clusterDict.keys() if len(clusterDict[c])>2]
+	cd = [int(c) for c in list(clusterDict.keys()) if len(clusterDict[c])>2]
 	cd.sort(reverse=True)
 	#print clusterDict
 	
