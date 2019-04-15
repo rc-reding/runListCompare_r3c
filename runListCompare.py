@@ -159,6 +159,7 @@ def run_cluster(maskfile, cluster_snp, exclude, output_stem, nprocs, refpath, se
         r = '-r %s'%exclude
     
     cmd = 'python clusterCreator.py -s %s %s %s/initial_nodes.txt %s/align-compare.txt %s/clusters.txt'%(cluster_snp, r, output_stem, output_stem, output_stem)
+    print(cmd)
     call(cmd.split())
     
     ## clean cluster directories

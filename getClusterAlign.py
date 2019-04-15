@@ -62,6 +62,7 @@ if __name__=='__main__':
 	clusterDict = dict()
 
 	for l in f:
+		print(l)
 		l = l.strip().split()
 		if l[0] in list(clusterDict.keys()):
 			clusterDict[l[0]].append(l[1])
@@ -86,6 +87,8 @@ if __name__=='__main__':
 	if not os.path.isdir('%s/cluster'%output_stem):
 		os.mkdir('%s/cluster'%output_stem)
 	
+	print(clusterDict)
+
 	for c in list(clusterDict.keys()):
 		clusterListOut = '%s/cluster/cluster_%s.txt'%(output_stem, c)
 		if len(clusterDict[c])>2:
