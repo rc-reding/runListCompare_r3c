@@ -46,8 +46,7 @@ if __name__=="__main__":
 		sys.exit(1)
 	
 	## open multifasta of variable sites
-	seqlist = SeqIO.parse(inname, "fasta")
-	seqlist = [s for s in seqlist]
+	seqlist = list(SeqIO.parse(inname, "fasta"))
 	sys.stdout.write("Successfully opened snps multi-fasta file.\n")
 	sys.stdout.flush()
 	
