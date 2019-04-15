@@ -255,6 +255,7 @@ call(cmd, shell=True)
 ## write ML distances file
 
 cmd = 'ls %s/cluster_ml/*scale*'%output_stem
+print(cmd)
 files = check_output(cmd, shell=True)
 files = files.split()
 

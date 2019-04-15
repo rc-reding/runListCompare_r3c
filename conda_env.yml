@@ -28,10 +28,20 @@ dependencies:
   - wheel=0.33.1=py27_0
   - zlib=1.2.11=h1de35cc_1004
   - pip:
+    - atomicwrites==1.3.0
+    - attrs==19.1.0
     - biopython==1.73
     - cogent==1.9
     - decorator==4.4.0
+    - funcsigs==1.0.2
+    - more-itertools==5.0.0
     - networkx==2.2
     - numpy==1.16.2
+    - pathlib2==2.3.3
+    - pluggy==0.9.0
+    - py==1.8.0
+    - pytest==4.4.0
+    - scandir==1.10.0
+    - six==1.12.0
 prefix: /Users/bede/conda/envs/runlistcompare
 
