@@ -88,6 +88,7 @@ if __name__=='__main__':
                     with gzip.open(fapath, 'rt') as fa_fh:
                         fa = list(SeqIO.parse(fa_fh, 'fasta'))[0]
                         fa.id = nicename
+                        fa.description = ''
                     seqlist.append(fa)
                 else:
                     sys.stderr.write(fapath+' does not exist, skipping...')
