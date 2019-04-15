@@ -5,12 +5,11 @@
 from subprocess import call
 from subprocess import check_output
 import sys, os, gzip
-from cogent import LoadTree
 from ConfigParser import SafeConfigParser
 from Bio import SeqIO
 
-#to install cogent
-#DONT_USE_PYREX=1 pip install --user cogent
+import treeswift
+
 
 ### import options from ini file ###
 ini_file = sys.argv[1]
@@ -255,7 +254,6 @@ call(cmd, shell=True)
 ## write ML distances file
 
 cmd = 'ls %s/cluster_ml/*scale*'%output_stem
-print(cmd)
 files = check_output(cmd, shell=True)
 files = files.split()
 
@@ -267,8 +265,11 @@ if draw_cf:
 	w_cf = open(outfile_cf, 'w')
 
 for f in files:
-	tr = LoadTree(f)
-	dists = tr.getDistances()
+	tr = treeswift.read_tree_newick(f)
+	dist_mat = tr.distance_matrix(leaf_labels=True)
+	dists = {(k, kk): vv  # Make flat tuple-keyed dict from nested dict of pairwise dists
+             for k, v in dist_mat.items()
+             for (kk, vv) in v.items()}
 	for pair in dists.keys():
 		if 'phyml_tree_scaled.tree' in f:
 			w_ml.write('%s\t%s\t%s\n'%(pair[0], pair[1], dists[pair]))
