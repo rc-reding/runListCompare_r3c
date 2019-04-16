@@ -57,7 +57,7 @@ if __name__=='__main__':
 	f = open(clusterfile, 'r')
 	bin = next(f)
 	clusterDict = dict()
-	
+
 	for l in f:
 		l = l.strip().split()
 		if l[0] in list(clusterDict.keys()):
@@ -75,7 +75,8 @@ if __name__=='__main__':
 		outStem = '%s/cluster_ml/cluster_%s'%(input_stem, c)
 		inStem = '%s/cluster/cluster_%s'%(input_stem, c)
 		tree = 't'
-		if draw_cf: tree = 'c'
+		if draw_cf:
+			tree = 'c'
 		iqtree = ''
 		if use_iqtree: iqtree = ' -q'
 		cmd = 'python padTree.py -%s%s -d -r %s %s %s_clean_positions.txt %s_clean_snps.fa %s'%(tree, iqtree, round_dp, ref_file, inStem, inStem, outStem)
@@ -99,7 +100,6 @@ if __name__=='__main__':
 	# get list of clusters
 	cd = [int(c) for c in list(clusterDict.keys()) if len(clusterDict[c])>2]
 	cd.sort(reverse=True)
-	#print clusterDict
 	
 	procs = []
 	

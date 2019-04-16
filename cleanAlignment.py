@@ -50,7 +50,6 @@ if __name__=='__main__':
 		sys.exit(1)
 	
 	
-	
 	sys.stdout.write('Cleaning %s\n'%prefix)
 
 	fafile = '%s_snps.fa'%prefix
@@ -70,7 +69,7 @@ if __name__=='__main__':
 	if n==1:
 		clean_aln = '%s_clean_snps.fa'%prefix
 		SeqIO.write( seqlist , clean_aln, "fasta" )
-		clean_posfile = '%s_clean_positions.txt'%prefix
+		clean_posfile = '%s`'%prefix
 		f = open(clean_posfile, 'w')
 		f.close()
 		sys.stdout.write('Done\n\n')

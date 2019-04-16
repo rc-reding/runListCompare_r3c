@@ -79,7 +79,6 @@ if __name__=='__main__':
     ## Read in all the sequences, and replace the id with the required nicename
     seqlist = []
     with open( listoffasta ) as fp:
-        # print('ooot', listoffasta)
         for line in fp:
             if line:
                 nicename, fapath = line.strip().split('\t')

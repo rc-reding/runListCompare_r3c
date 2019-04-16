@@ -159,7 +159,6 @@ def run_cluster(maskfile, cluster_snp, exclude, output_stem, nprocs, refpath, se
         r = '-r %s'%exclude
     
     cmd = 'python clusterCreator.py -s %s %s %s/initial_nodes.txt %s/align-compare.txt %s/clusters.txt'%(cluster_snp, r, output_stem, output_stem, output_stem)
-    print(cmd)
     call(cmd.split())
     
     ## clean cluster directories
@@ -250,10 +249,11 @@ sys.stdout.write(cmd+'\n')
 sys.stdout.flush()
 call(cmd, shell=True)
 
-## write ML distances file
+# write ML distances file
+
 
 cmd = 'ls %s/cluster_ml/*scale*'%output_stem
-files = check_output(cmd, shell=True)
+files = check_output(cmd, shell=True ,universal_newlines=True)
 files = files.split()
 
 outfile_ml = '%s/ML_distances.txt'%output_stem
