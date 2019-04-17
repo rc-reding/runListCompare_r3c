@@ -12,7 +12,7 @@
 
 ## Installation
 
-1. Download and decompress release, and `cd` into it
+1. Download and decompress the [latest release](https://github.com/davideyre/runListCompare/releases/latest), and `cd` into it
 2. Install dependencies using Conda:
    - `conda env create -f conda.yml`
 3. Activate and test installation
@@ -23,7 +23,7 @@
 
 ### Python 2.7 version
 
-1. Download and decompress release, and `cd` into it
+1. Download and decompress the [release](https://github.com/davideyre/runListCompare/archive/0.2.7.tar.gz), and `cd` into it
 2. `conda env create -f conda_python2.yml`
 3. `conda activate runlistcompare2`
 
