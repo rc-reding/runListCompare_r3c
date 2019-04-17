@@ -1,4 +1,4 @@
-name: runlistcompare3
+name: runlistcompare
 channels:
   - bioconda
   - defaults
