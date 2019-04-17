@@ -7,7 +7,7 @@
 
 
 from optparse import OptionParser
-import os, sys, commands
+import os, sys, subprocess
 import networkx as nx
 
 usage = '''
@@ -63,7 +63,7 @@ if __name__=="__main__":
 
 	## echo out removed nodes
 	if len(remove_nodes)>0:
-		sys.stdout.write("Removing exlcuded nodes\n")
+		sys.stdout.write("Removing excluded nodes\n")
 		sys.stdout.write("\n".join(remove_nodes))
 		sys.stdout.flush()
 	

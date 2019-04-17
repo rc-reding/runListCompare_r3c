@@ -78,11 +78,13 @@ if __name__=="__main__":
 	# read in reference
 	if os.path.exists(ref_file):
 		#refseq = SeqIO.read( ref_file, "fasta" )
-		fa = SeqIO.parse( ref_file, "fasta" )
-		fa_seq = Seq("".join([s.seq._data for s in fa]), generic_dna)
-		fa_id = "ref"
-		refseq = SeqRecord(fa_seq, id=fa_id)
-		
+		# fa = SeqIO.parse( ref_file, "fasta" )
+		# fa_seq = Seq("".join([s.seq._data for s in fa]), generic_dna)
+		# fa_id = "ref"
+		# refseq = SeqRecord(fa_seq, id=fa_id)
+		refseq = next(SeqIO.parse(ref_file, "fasta"))
+		refseq.id = 'ref'
+		refseq.description = None
 	else:
 		sys.stdout.write('Reference path incorrect, please check and try again.\n')
 		sys.exit(1)

@@ -5,7 +5,7 @@
 
 from Bio import SeqIO
 import os, gzip, sys
-from itertools import izip
+
 from optparse import OptionParser
 
 usage = '''
@@ -50,7 +50,6 @@ if __name__=='__main__':
 		sys.exit(1)
 	
 	
-	
 	sys.stdout.write('Cleaning %s\n'%prefix)
 
 	fafile = '%s_snps.fa'%prefix
@@ -70,7 +69,7 @@ if __name__=='__main__':
 	if n==1:
 		clean_aln = '%s_clean_snps.fa'%prefix
 		SeqIO.write( seqlist , clean_aln, "fasta" )
-		clean_posfile = '%s_clean_positions.txt'%prefix
+		clean_posfile = '%s`'%prefix
 		f = open(clean_posfile, 'w')
 		f.close()
 		sys.stdout.write('Done\n\n')
@@ -78,7 +77,7 @@ if __name__=='__main__':
 	if n>1:
 	
 		#get list of positions called >= varsite_keep of time
-		seq_generator = izip(*seqlist)
+		seq_generator = zip(*seqlist)
 		keep = [i for ( i, a ) in enumerate( seq_generator ) 
 					   if float(len([ai for ai in a if ai in bases]))/n >=varsite_keep]
 
@@ -111,7 +110,7 @@ if __name__=='__main__':
 		if len(reject)>0:
 			sys.stdout.write('\tReject: %s\n'%", ".join(reject))
 			rf = open(rejectfile, 'w')
-			for r in rejectDict.keys():
+			for r in list(rejectDict.keys()):
 				rf.write('%s\t%s\t%s\t%0.4f\n'%(r, rejectDict[r][0], rejectDict[r][1], rejectDict[r][2]))
 			rf.close()
 		

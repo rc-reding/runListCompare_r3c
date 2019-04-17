@@ -3,7 +3,7 @@
 
 import sys, re, os, gzip, time, multiprocessing, math, random
 from Bio import SeqIO
-from itertools import izip
+
 from optparse import OptionParser
 
 usage = '''
@@ -28,7 +28,7 @@ bases = "ACGT"
 
 def get_distance( seq1, seq2 ):
 	'''Function to calculate the [Hamming] distance between two sequences'''
-	return sum(c1!=c2 for c1, c2 in izip( seq1, seq2 ) if c1 in bases and c2 in bases)
+	return sum(c1!=c2 for c1, c2 in zip( seq1, seq2 ) if c1 in bases and c2 in bases)
 
 if __name__=="__main__":
 	
@@ -46,8 +46,7 @@ if __name__=="__main__":
 		sys.exit(1)
 	
 	## open multifasta of variable sites
-	seqlist = SeqIO.parse(inname, "fasta")
-	seqlist = [s for s in seqlist]
+	seqlist = list(SeqIO.parse(inname, "fasta"))
 	sys.stdout.write("Successfully opened snps multi-fasta file.\n")
 	sys.stdout.flush()
 	
@@ -60,6 +59,8 @@ if __name__=="__main__":
 	def compare (i, seqlist, start_i, end_i, out_q):
 		'''compare function compares a subset of the data'''
 		outfile = "%s_%s"%(outname, i)
+		print('ootfile', outfile)
+		print([s.id for s in seqlist])
 		f = open(outfile, "w")
 		for i in seqlist[start_i:end_i]:
 			for j in seqlist:

@@ -55,12 +55,12 @@ if __name__=='__main__':
 	clusterfile = '%s/clusters.txt'%input_stem
 	sys.stdout.write('Opening cluster file: %s\n'%clusterfile)
 	f = open(clusterfile, 'r')
-	bin = f.next()
+	bin = next(f)
 	clusterDict = dict()
-	
+
 	for l in f:
 		l = l.strip().split()
-		if l[0] in clusterDict.keys():
+		if l[0] in list(clusterDict.keys()):
 			clusterDict[l[0]].append(l[1])
 		else:
 			clusterDict[l[0]] = [l[1]]
@@ -75,17 +75,18 @@ if __name__=='__main__':
 		outStem = '%s/cluster_ml/cluster_%s'%(input_stem, c)
 		inStem = '%s/cluster/cluster_%s'%(input_stem, c)
 		tree = 't'
-		if draw_cf: tree = 'c'
+		if draw_cf:
+			tree = 'c'
 		iqtree = ''
 		if use_iqtree: iqtree = ' -q'
-		cmd = 'padTree.py -%s%s -d -r %s %s %s_clean_positions.txt %s_clean_snps.fa %s'%(tree, iqtree, round_dp, ref_file, inStem, inStem, outStem)
+		cmd = 'python padTree.py -%s%s -d -r %s %s %s_clean_positions.txt %s_clean_snps.fa %s'%(tree, iqtree, round_dp, ref_file, inStem, inStem, outStem)
 		sys.stdout.write(cmd+'\n')
 		sys.stdout.flush()
 		call(cmd.split())
 		
 		if draw_cf:
 			#generate alignment with recombination removed
-			cmd = 'removeRecombination.py -c %s %s'%(c, input_stem)
+			cmd = 'python removeRecombination.py -c %s %s'%(c, input_stem)
 			sys.stdout.write(cmd+'\n')
 			sys.stdout.flush()
 			call(cmd.split())
@@ -97,9 +98,8 @@ if __name__=='__main__':
 			getML(c)
 	
 	# get list of clusters
-	cd = [int(c) for c in clusterDict.keys() if len(clusterDict[c])>2]
+	cd = [int(c) for c in list(clusterDict.keys()) if len(clusterDict[c])>2]
 	cd.sort(reverse=True)
-	#print clusterDict
 	
 	procs = []
 	
