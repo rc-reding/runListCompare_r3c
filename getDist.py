@@ -59,7 +59,7 @@ if __name__=="__main__":
 	def compare (i, seqlist, start_i, end_i, out_q):
 		'''compare function compares a subset of the data'''
 		outfile = "%s_%s"%(outname, i)
-		print('ootfile', outfile)
+		# print('ootfile', outfile)
 		print([s.id for s in seqlist])
 		f = open(outfile, "w")
 		for i in seqlist[start_i:end_i]:

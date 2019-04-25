@@ -17,7 +17,7 @@
    - `conda env create -f conda.yml`
 3. Activate and test installation
    - `conda activate runlistcompare`
-   - `python runListCompare.py tests/data/test.ini` (~2mins)
+   - `pytest` (takes ~2mins)
 
 
 
