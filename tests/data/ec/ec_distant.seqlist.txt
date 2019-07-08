@@ -1,0 +1,3 @@
+005f6970	tests/data/ec/005f6970-78ff-4e95-b22f-a8cc064dd402.snps.consensus.fa.gz
+02080367	tests/data/ec/02080367-872a-47fa-9412-a3eefb7cfb86.snps.consensus.fa.gz
+03297834	tests/data/ec/03297834-8d15-44e4-bd0d-38a0e234f8b5.snps.consensus.fa.gz

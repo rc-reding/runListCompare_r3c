@@ -16,6 +16,7 @@ dependencies:
   - mpi
   - msgpack-python
   - ncurses
+  - numpy
   - openmp
   - openmpi
   - openssl
@@ -31,7 +32,6 @@ dependencies:
   - pip:
     - atomicwrites
     - attrs
-    - numpy
     - biopython
     - cogent
     - decorator

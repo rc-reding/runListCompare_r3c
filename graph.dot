@@ -1,0 +1,11 @@
+digraph runlistcompare {
+	"runListCompare.py" -> "getClusterML.py"
+	"getClusterML.py" -> "removeRecombination.py"
+	"runListCompare.py" -> "mtAlign.py"
+	"runListCompare.py" -> "clusterCreator.py"
+	"runListCompare.py" -> "getClusterAlign.py"
+	"getClusterAlign.py" -> "getAlignment.py"
+	"getClusterAlign.py" -> "cleanAlignment.py"
+	"runListCompare.py" -> "getDist.py"
+	"getClusterML.py" -> "PadTree.py"
+}
