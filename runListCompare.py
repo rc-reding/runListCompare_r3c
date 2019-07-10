@@ -85,7 +85,7 @@ if not os.path.isdir('%s/cluster_ml'%output_stem):
 
 ## read in list of fasta files
 f = open(seqlist, 'r')
-seqlist = [l.strip().split() for l in f]
+seqlist = [l.strip().split() for l in f if l.strip()]
 
 #check all sequences are of sufficient length and write pctACGT
 f = open('%s/pctACGT.txt'%output_stem, 'w')

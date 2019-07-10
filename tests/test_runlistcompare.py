@@ -32,7 +32,7 @@ def test_all_cd():
 
 
 def test_all_ec():
-    # IQtree, seq_keep=0.7, varsite_keep=0.7
+    # IQtree, seq_keep=0.7, varsite_keep=0.7, trailing empty lines in seqlist
     out_path = 'tests/output/ec'
     if os.path.isdir(out_path):
         shutil.rmtree(out_path)
