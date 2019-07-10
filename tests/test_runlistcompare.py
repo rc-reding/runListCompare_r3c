@@ -19,8 +19,12 @@ def run(cmd, cwd=cwd):
                           stderr=subprocess.PIPE)
 
 def test_all_cd():
-    if os.path.isdir('tests/output/cd'):
-        shutil.rmtree('tests/output/cd')
+    # PhyML, seq_keep=0, varsite_keep=0
+    out_path = 'tests/output/cd'
+    if os.path.isdir(out_path):
+        shutil.rmtree(out_path)
+    else:
+        os.makedirs(out_path)
     run('python runListCompare.py tests/data/cd/cd.ini')
     with open('tests/output/cd/align_positions.txt', 'rb') as fh:
         contents = fh.read()
@@ -28,8 +32,12 @@ def test_all_cd():
 
 
 def test_all_ec():
-    if os.path.isdir('tests/output/ec'):
-        shutil.rmtree('tests/output/ec')
+    # IQtree, seq_keep=0.7, varsite_keep=0.7
+    out_path = 'tests/output/ec'
+    if os.path.isdir(out_path):
+        shutil.rmtree(out_path)
+    else:
+        os.makedirs(out_path)
     run('python runListCompare.py tests/data/ec/ec.ini')
     with open('tests/output/ec/align_positions.txt', 'rb') as fh:
         contents = fh.read()
