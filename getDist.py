@@ -54,13 +54,12 @@ if __name__=="__main__":
 	random.shuffle(seqlist)
 	
 	## Do the data matrix
-	start = time.clock()
+	start = time.perf_counter()
 	
 	def compare (i, seqlist, start_i, end_i, out_q):
 		'''compare function compares a subset of the data'''
 		outfile = "%s_%s"%(outname, i)
-		# print('ootfile', outfile)
-		print([s.id for s in seqlist])
+		# print([s.id for s in seqlist])  # debug
 		f = open(outfile, "w")
 		for i in seqlist[start_i:end_i]:
 			for j in seqlist:
@@ -87,6 +86,6 @@ if __name__=="__main__":
 		p.join()
 	
 	
-	time_elapsed = time.clock() - start
+	time_elapsed = time.perf_counter() - start
 	sys.stdout.write("Successfully wrote distance matrix in %s seconds.\n"%time_elapsed)
 	sys.stdout.write("Done.\n\n")

@@ -35,7 +35,7 @@ Example:
 
 if __name__=='__main__':
 
-    start = time.clock()
+    start = time.perf_counter()
 
     ### PROCESS INPUT OPTIONS AND ARGUMENTS ### 
     parser = OptionParser()
@@ -88,9 +88,9 @@ if __name__=='__main__':
             else:
                 sys.stderr.write(fapath+' does not exist, skipping...')
     
-    time_elapsed = time.clock() - start
+    time_elapsed = time.perf_counter() - start
     sys.stdout.write("Successfully read in sequences in %s seconds.\n"%time_elapsed)
-    start = time.clock()
+    start = time.perf_counter()
     
     ## find nonshared positions after masking
     seq_generator = zip( masksites, *seqlist  )
@@ -111,6 +111,6 @@ if __name__=='__main__':
         out.write('\n')
     sys.stderr.write('Successfully wrote nonshared positions.\n')
     
-    time_elapsed = time.clock() - start
+    time_elapsed = time.perf_counter() - start
     sys.stdout.write("Successfully completed alignment in %s seconds.\n"%time_elapsed)
 

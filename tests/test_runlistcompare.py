@@ -42,3 +42,5 @@ def test_all_ec():
     with open('tests/output/ec/align_positions.txt', 'rb') as fh:
         contents = fh.read()
     assert hashlib.md5(contents).hexdigest() == '811f7f54d6d5a5867bdeb718f1ac6e9a'
+
+# Too low a SNP threshold causes line 257 of runListCompare.py to fail

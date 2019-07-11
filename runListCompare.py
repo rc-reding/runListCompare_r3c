@@ -159,6 +159,8 @@ def run_cluster(maskfile, cluster_snp, exclude, output_stem, nprocs, refpath, se
         r = '-r %s'%exclude
     
     cmd = 'python clusterCreator.py -s %s %s %s/initial_nodes.txt %s/align-compare.txt %s/clusters.txt'%(cluster_snp, r, output_stem, output_stem, output_stem)
+    sys.stdout.write(cmd+'\n')
+    sys.stdout.flush()
     call(cmd.split())
     
     ## clean cluster directories
@@ -197,21 +199,21 @@ iteration = 0
 while True:
     iteration +=1
     cmd = 'ls -l %s/cluster/*reject* 2> /dev/null | wc -l'%output_stem
-    r = check_output(cmd, shell=True)
+    r = check_output(cmd, shell=True, text=True)
     r = int(r.strip())
     if r == 0:
         break
     
     # get list of rejected nodes
     cmd = 'cat %s/cluster/*reject*'%output_stem
-    exclude = check_output(cmd, shell=True)
+    exclude = check_output(cmd, shell=True, text=True)
     # save these to file too
     cmd = 'cat %s/cluster/*reject* >> %s/rejected_nodes.txt 2>/dev/null'%(output_stem, output_stem)
     call(cmd, shell=True)
     
     #get the numbers of any rejected clusters - cannot use cluster_ in filename - copy and rename
     cmd = 'ls %s/cluster/*reject* 2> /dev/null'%output_stem
-    reject = check_output(cmd, shell=True).split()
+    reject = check_output(cmd, shell=True, text=True).split()
     for r in reject:
         r = r.split('/cluster/cluster_')[1].split('_')[0]
         cmd = 'cp %s/cluster/*_%s_* %s/reject/'%(output_stem, r, output_stem)
@@ -252,8 +254,8 @@ call(cmd, shell=True)
 # write ML distances file
 
 
-cmd = 'ls %s/cluster_ml/*scale*'%output_stem
-files = check_output(cmd, shell=True ,universal_newlines=True)
+cmd = 'ls %s/cluster_ml/*scale*'%output_stem  # Too low a SNP threshold and this fails
+files = check_output(cmd, shell=True, text=True)
 files = files.split()
 
 outfile_ml = '%s/ML_distances.txt'%output_stem
