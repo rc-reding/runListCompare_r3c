@@ -197,7 +197,7 @@ if __name__=="__main__":
 				scaled_tree = '%s_phyml_tree_scaled.tree'%out_prefix
 			else:
 				#run iqtree
-				cmd = 'iqtree -s %s -m GTR+G -blmin 0.00000001 -t PARS'%out_phy
+				cmd = 'iqtree -s %s -m GTR+G -nt AUTO -blmin 0.00000001 -t PARS'%out_phy
 				sys.stdout.write('%s\n'%cmd)
 				sys.stdout.flush()
 				subprocess.check_call(shlex.split(cmd))
