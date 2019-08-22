@@ -32,10 +32,18 @@
 ## Usage
 
 ```
-python runListCompare.py tests/data/test.ini
+python runListCompare.py python runListCompare.py tests/data/ec/ec.ini
 ```
 
-Here `test.ini` is an ini file containing the required settings. It is advisable to run the above command to test that things are working with the included demo data. Input sequences are listed in a tab separated format, an example is provided in `tests/data/test.seqlist.txt` – the first column can be up to 8 characters in length and is used for the tip labels of the final trees.
+Here `test.ini` is an ini file containing the desired parameters. It is advisable to run the above command to test that things are working with the included demo data. Input sequences are listed in a tab separated format, and an example is provided in `tests/data/ec/ec.seqlist.txt`. The first column can be up to 8 characters in length and is used for  tip labels of the final trees, a requirement imposed by ClonalFrameML.
+
+
+
+Important configurable parameters to consider include:
+- `perACGT_cutoff`: Minimum percentage of reference genome to be called in order for a sequence to be included
+- `cluster_snp`: Threshold for single linkage clustering by SNP distance
+- `varsite_keep`: Proportion of variable sites that need to be called across all sequences for site to be retained
+- `seq_keep`: Proportion of variable sites that need to be called within a sequence for the sequence to be retained
 
 
 
@@ -45,7 +53,9 @@ Here `test.ini` is an ini file containing the required settings. It is advisable
 - the `cluster` folder contains variable site alignments for each cluster of related samples
 - the `cluster_ml` folder contains the output maximum likelihood phylogenies, e.g. `cluster_1_phyml_tree_scaled.tree` is the phyML generated tree scaled to have branch lengths in SNPs and the `cluster_1_cf_scaled.tree` is the ClonalFrameML corrected tree scaled to have branch lengths in SNPs
 - the `recomb_corr` folder contains alignment of variable sites with recombination removed for use as input with other software, e.g. BEAST
-- the `ML_distances.txt` and `CF_distances.txt` files contain the pairwise distances obtained from the maximum likelihood and ClonalFrameML phylogenies
+- the `ML_distances.txt` and `CF_distances.txt` files contain the pairwise distances obtained from the maximum likelihood and ClonalFrameML phylogenies.
+
+
 
 ---
 
