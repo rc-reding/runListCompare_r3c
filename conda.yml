@@ -1,60 +1,16 @@
 name: runlistcompare
 channels:
-  - bioconda
-  - defaults
   - conda-forge
+  - bioconda
+
 dependencies:
-  - atomicwrites
-  - attrs
-  - biopython
-  - blas
-  - ca-certificates
-  - certifi
-  - clonalframeml
-  - decorator
-  - freetype
-  - intel-openmp
-  - iqtree
-  - jpeg
-  - libcxx
-  - libcxxabi
-  - libedit
-  - libffi
-  - libgfortran
-  - libpng
-  - libtiff
-  - llvm-openmp
-  - mkl
-  - mkl_fft
-  - mkl_random
-  - mmtf-python
-  - more-itertools
-  - mpi
-  - msgpack-python
-  - ncurses
-  - networkx
-  - numpy
-  - numpy-base
-  - olefile
-  - openmp
-  - openmpi
-  - openssl
-  - pathlib2
-  - phyml
-  - pillow
-  - pip
-  - pluggy
-  - py
-  - pytest
-  - python=3.7.3
-  - readline
-  - reportlab
-  - setuptools
-  - six
-  - sqlite
-  - tk
+  - python==3.7
   - treeswift
-  - wheel
-  - xz
-  - zlib
-  - zstd
+  - biopython
+  - clonalframeml
+  - iqtree
+  - phyml
+  - networkx
+  - phyml
+  - pytest
+  - numpy
