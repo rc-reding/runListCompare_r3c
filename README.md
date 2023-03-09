@@ -8,11 +8,13 @@
 
 - [Anaconda](https://www.anaconda.com/distribution/) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 
+
+
 ## Installation
 
-1. Install dependencies using Conda (or Mamba to save time):
-   - `conda create -n runlistcompare -c bioconda python=3 biopython=1.73 clonalframeml iqtree pytest treeswift networkx phyml`
-2. Download and decompress the [latest release](https://github.com/davideyre/runListCompare/releases/latest), and `cd` into it
+1. Download and decompress the [latest release](https://github.com/davideyre/runListCompare/releases/latest), and `cd` into it
+2. Install dependencies using Conda:
+   - `conda env create -f conda.yml`
 3. Activate and test installation
    - `conda activate runlistcompare`
    - `pytest` (takes ~2mins)
@@ -30,7 +32,7 @@
 ## Usage
 
 ```
-python runListCompare.py tests/data/ec/ec.ini
+python runListCompare.py python runListCompare.py tests/data/ec/ec.ini
 ```
 
 Here `test.ini` is an ini file containing the desired parameters. It is advisable to run the above command to test that things are working with the included demo data. Input sequences are listed in a tab separated format, and an example is provided in `tests/data/ec/ec.seqlist.txt`. The first column can be up to 8 characters in length and is used for  tip labels of the final trees, a requirement imposed by ClonalFrameML.
