@@ -2,3 +2,7 @@
 __pycache__/
 .pyc
 tests/output/
+.git.bkp/
+refs/
+outbreak_955/
+slurm*
