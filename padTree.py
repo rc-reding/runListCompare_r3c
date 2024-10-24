@@ -150,14 +150,14 @@ if __name__=="__main__":
 		for s in seqlist:
 			s.seq._data = ''.join(new_seq[s.id])
 			s.description = ''
-		
+
 		#write the padded sequences file
 		out_fa = out_prefix+'_padded.fa'
 		out_phy = out_prefix+'_padded.phy'
 		SeqIO.write(seqlist, out_fa, 'fasta')
 		sys.stdout.write('Fasta file written\n')
 		sys.stdout.flush()
-		SeqIO.write(seqlist, out_phy, 'phylip')
+		SeqIO.write(seqlist, out_phy, 'phylip-relaxed')
 		sys.stdout.write('Phylip file written\n')
 		sys.stdout.flush()
 		

@@ -8,7 +8,6 @@
 import sys, re, os, gzip, time, multiprocessing, math, random, datetime
 from Bio import SeqIO
 from Bio.Seq import Seq
-from Bio.Alphabet import generic_dna
 from Bio.SeqRecord import SeqRecord
 
 from optparse import OptionParser
@@ -57,7 +56,7 @@ if __name__=='__main__':
     
     #read in reference, concatenate multiple chromasomes
     #refseq = SeqIO.read( refpath, 'fasta' ).seq
-    refseq = "".join([s.seq._data for s in SeqIO.parse( refpath, 'fasta' )])
+    refseq = ''.join([str(s.seq) for s in SeqIO.parse( refpath, 'fasta' )])
     reflen = len( refseq )
     sys.stderr.write('Successfully read in reference, length %s.\n'%reflen)    
     
@@ -154,7 +153,7 @@ if __name__=='__main__':
     for seq in seqlist:
         nonshared_bases = ''.join( seq.seq[ i ] for i in nonshared_pos )
         seq.seq._data = nonshared_bases
-    SeqIO.write( seqlist , '%s_snps.fa'%outname_prefix, 'fasta' )
+    SeqIO.write(sequences=seqlist , handle='%s_snps.fa'%outname_prefix, format='fasta' )
     sys.stderr.write('Successfully wrote snps fasta file.\n')
     sys.stdout.flush()
     
@@ -163,8 +162,8 @@ if __name__=='__main__':
         out.write( '\n'.join( [ str( n+1 ) for n in nonshared_pos ] ) )
         out.write('\n')
     sys.stderr.write('Successfully wrote nonshared positions.\n')
-    sys.stdout.flush()
     
+    sys.stdout.flush()
     time_elapsed = datetime.datetime.now() - start
     time_elapsed = float(time_elapsed.seconds) + float(time_elapsed.microseconds/1e6)
     sys.stdout.write("Successfully completed alignment in %0.1f seconds.\n"%time_elapsed)
